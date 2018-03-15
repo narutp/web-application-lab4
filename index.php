@@ -18,20 +18,28 @@
     <div class="container">
         
         <form action="index.php" method="post">
-            Previous font type <div name="previous_font_type"><?php echo $_COOKIE["cft"]; ?></div>
-            Previous font size <div name="previous_font_size"><?php echo $_COOKIE["cfs"]; ?></div>
+            Previous font type <div name="previous_font_type">
+                <?php if(isset($_POST["input_font_type"])) {
+                    echo $_COOKIE["cft"]; 
+                } ?></div>
+            Previous font size <div name="previous_font_size">
+                <?php if(isset($_POST["input_font_size"])) {
+                    echo $_COOKIE["cfs"]; 
+                } ?></div>
             Current font type <div name="current_font_type">
-                <?php if(!(isset($_COOKIE["cft"]))) { 
-                    echo $_COOKIE["cft"];
+                <?php if(isset($_POST["input_font_type"])) { 
+                    echo $_POST["input_font_type"];
                     } else {
-                        echo $_POST["input_font_type"]; 
+                        echo $_COOKIE["cft"];
                     } ?>
-                    </div>
-            Current font size <div name="current_font_size"><?php if(!(isset($_COOKIE["cfs"]))) { 
-                    echo $_COOKIE["cfs"];
+                </div>
+            Current font size <div name="current_font_size">
+                <?php if(isset($_POST["input_font_size"])) { 
+                    echo $_POST["input_font_size"];
                     } else {
-                        echo $_POST["input_font_size"]; 
-                    } ?></div>
+                        echo $_COOKIE["cfs"];
+                    } ?>
+                </div>
             Input font type: <input type="text" name="input_font_type"><br>
             Input font size: <input type="text" name="input_font_size"><br>
             <input type="submit">
