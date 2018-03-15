@@ -1,3 +1,9 @@
+<?php
+    $cft = "cft";
+    $cfs = "cfs";
+    setcookie($cft, $_POST["input_font_type"]);
+    setcookie($cfs, $_POST["input_font_size"]);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,33 +16,26 @@
 </head>
 <body>
     <div class="container">
-        <div>
-            <div style="display: inline" id="title1">Previous font type: </div>
-            <div style="display: inline" id="previousFontType">Previous</div>
-        </div>
-        <div>
-            <div style="display: inline" id="title1">Previous font size: </div>
-            <div style="display: inline" id="previousFontType">12</div>
-        </div>
-        <div>
-            <div style="display: inline" id="title1">Current font type: </div>
-            <div style="display: inline" id="previousFontType">Current</div>
-        </div>
-        <div>
-            <div style="display: inline" id="title1">Current font type: </div>
-            <div style="display: inline" id="previousFontType">15</div>
-        </div>
-        <div>
-            <div style="display: inline" id="title1">Font type: </div>
-            <input id="fontType" type="text" />
-        </div>
-        <div>
-            <div style="display: inline" id="title1">Font size: </div>
-            <input id="fontType" type="text" />
-        </div>
+        
+        <form action="index.php" method="post">
+            Previous font type <div name="previous_font_type"><?php echo $_COOKIE["cft"]; ?></div>
+            Previous font size <div name="previous_font_size"><?php echo $_COOKIE["cfs"]; ?></div>
+            Current font type <div name="current_font_type">
+                <?php if(!(isset($_COOKIE["cft"]))) { 
+                    echo $_COOKIE["cft"];
+                    } else {
+                        echo $_POST["input_font_type"]; 
+                    } ?>
+                    </div>
+            Current font size <div name="current_font_size"><?php if(!(isset($_COOKIE["cfs"]))) { 
+                    echo $_COOKIE["cfs"];
+                    } else {
+                        echo $_POST["input_font_size"]; 
+                    } ?></div>
+            Input font type: <input type="text" name="input_font_type"><br>
+            Input font size: <input type="text" name="input_font_size"><br>
+            <input type="submit">
+        </form>
     </div>
-    <?php
-    echo "My first PHP script!";
-    ?>
 </body>
 </html>
