@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         
-        <form action="index.php" method="post">
+        <form action="index(cookies).php" method="post">
             Previous font type <div name="previous_font_type">
                 <?php if(isset($_POST["input_font_type"])) {
                     echo $_COOKIE["cft"]; 
