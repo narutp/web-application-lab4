@@ -1,4 +1,4 @@
-# web-application-lab4
+# Web-application-lab4
 ## Web application homework 4 - PHP & Session
 
 ## Introduction
